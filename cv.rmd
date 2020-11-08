@@ -57,7 +57,7 @@ read_excel("data/academic_postions.xls", sheet="roles") %>%
 ```{r awards}
 
 read.csv("data/awards.csv") %>%
-  brief_entries(title, date, institution_brief)
+  brief_entries(paste0(title,", ", institution), date, value)
 ```
 
 # Professional History
