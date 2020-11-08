@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```{r education}
 
-education <- read.csv("data/education.csv") %>%
+read.csv("data/education.csv") %>%
   detailed_entries(degree, dates, university, location, details)
 ```
 
@@ -29,7 +29,7 @@ education <- read.csv("data/education.csv") %>%
 
 ```{r awards}
 
-awards <- read.csv("data/awards.csv") %>%
+read.csv("data/awards.csv") %>%
   brief_entries(title, year, institution, location)
 ```
 
@@ -38,7 +38,7 @@ awards <- read.csv("data/awards.csv") %>%
 ```{r professional}
 
 library(readxl)
-professional_history <- read_excel("data/professional_history.xls", sheet = "roles") %>%
+read_excel("data/professional_history.xls", sheet = "roles") %>%
   detailed_entries(role, company, location, dates)
 
 ```
