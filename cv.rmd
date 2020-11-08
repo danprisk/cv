@@ -30,7 +30,7 @@ read.csv("data/education.csv") %>%
 ```{r awards}
 
 read.csv("data/awards.csv") %>%
-  brief_entries(title, year, institution, location)
+  brief_entries(title, year, institution)
 ```
 
 # Professional History
@@ -39,6 +39,6 @@ read.csv("data/awards.csv") %>%
 
 library(readxl)
 read_excel("data/professional_history.xls", sheet = "roles") %>%
-  detailed_entries(role, company, location, dates)
+  detailed_entries(company, location, role, dates)
 
 ```
