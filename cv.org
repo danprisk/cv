@@ -1,0 +1,104 @@
+---
+name: Dan Prisk
+date: "`r format(Sys.time(), '%B, %Y')`"
+qualifications: BA(Hons)
+position: Graduate Student
+address: Squamish, BC. Canada.
+phone: 778 231 5944
+email: dan@prisk.ca
+website: http://dan.prisk.ca
+twitter: danprisk
+output: vitae::awesomecv
+---
+#+TITLE: Resume
+#+OPTIONS: toc:nil
+#+OPTIONS: ^:{} 
+#+LaTeX_class: apa7
+#+LaTeX_CLASS_OPTIONS: [stu, floatsintext, natbib]
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \affiliation{The University of British Columbia}
+#+LaTeX_HEADER: \shorttitle{Logistic Regression}
+#+LaTeX_HEADER: \course{SOCI514: Quantitative Data Analysis}
+#+LaTeX_HEADER: \professor{Dr. Elizabeth Hirsh}
+#+LaTeX_HEADER: \duedate{22nd March 2021}
+#+LaTeX_HEADER: \usepackage{breakcites}
+#+LaTeX_HEADER: \usepackage{paralist}
+#+LaTeX_HEADER: \usepackage{setspace}
+#+LaTeX_HEADER: \AtBeginEnvironment{tabular}{\singlespacing}
+#+LaTeX_HEADER: \let\itemize\compactitem
+#+LaTeX_HEADER: \let\description\compactdesc
+#+LaTeX_HEADER: \let\enumerate\compactenum
+#+PROPERTY: header-args:R :session R.interaction
+
+#+NAME: setup
+#+begin_src R :exports none 
+  library(tidyverse)
+  library(vitae)
+  library(readxl)
+#  knitr::opts_chunk$set(echo = FALSE)
+#+end_src
+
+* Education
+
+#+NAME: education
+#+begin_src R :exports results :colnames yes
+
+  read.csv("data/education.csv") %>%
+    detailed_entries(degree, dates, university, location, details)
+
+#+end_src 
+
+* Research
+
+** Interests
+
+   *Environmental Sociology, Social Movements, Social Theory (broadly
+   continental and critical).*
+
+   Understanding the social structures that give rise to, and form the
+   outcomes of, contemporary environmental social movements. What
+   structural factors lead people to care about the environment,
+   engage in environmental movements, and align those movements with
+   decolonial environmental and social justice goals?
+
+** Manuscripts in Progress
+
+#+NAME: manuscripts
+#+begin_src R :exports results  
+
+  read.csv("data/manuscripts.csv") %>%
+      detailed_entries(authors, ,title, authors ,about)
+
+#+end_src
+
+* Positions Held
+
+#+NAME: positions
+#+begin_src R :exports results  
+
+  read_excel("data/academic_postions.xls", sheet="roles") %>%
+      map_df(rev) %>%
+    detailed_entries(institution, location, role, dates)
+
+#+end_src
+
+* Scholarships and Awards
+
+#+NAME: awards
+#+begin_src R :exports results  
+
+  read.csv("data/awards.csv") %>%
+      brief_entries(paste0(title,", ", institution), date, value)
+
+#+end_src
+
+* Professional History
+
+#+NAME: professional
+#+begin_src R :exports results  
+
+  read_excel("data/professional_history.xls", sheet = "roles") %>%
+      detailed_entries(company, location, role, dates)
+
+#+end_src
+
